@@ -1,5 +1,5 @@
 class SchedulesController < ApplicationController
-  before_action :set_schedule, only: [:show, :update, :destroy]
+  before_action :set_schedule, only: [:show, :destroy]
 
   # GET /schedules
   def index
@@ -19,15 +19,6 @@ class SchedulesController < ApplicationController
 
     if @schedule.save
       render json: @schedule, status: :created, location: @schedule
-    else
-      render json: @schedule.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /schedules/1
-  def update
-    if @schedule.update(schedule_params)
-      render json: @schedule
     else
       render json: @schedule.errors, status: :unprocessable_entity
     end
